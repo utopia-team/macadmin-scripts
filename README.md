@@ -1,3 +1,29 @@
+### macadmin-scripts: Features implemented by this fork
+
+Since `curl` is the default program to download packages for the script that can be found in the [original repo](https://github.com/munki/macadmin-scripts) with the help of [@dreamwhite](https://github.com/dreamwhite) we were able to add support for the beautiful `aria2c` downloader which can be downloaded [here](https://github.com/aria2/aria2/releases/latest)
+
+The `installinstallmacos.py` expects that `aria2c` is present in `/usr/local/bin`, so please download the release binary and put that in that directory:
+
+```
+sudo mkdir /usr/local/bin
+sudo cp ~/Downloads/aria2c /usr/local/bin
+sudo xattr -cr /usr/local/bin/aria2c
+```
+
+Once the program is present in that folder, run the script:
+
+```
+cd /Users/Shared || exit 1
+mkdir macOSInstaller || exit 1
+cd macOSInstaller || exit 1
+curl -O https://raw.githubusercontent.com/utopia-team/macadmin-scripts/main/installinstallmacos.py || exit 1
+sudo python installinstallmacos.py --seedprogram DeveloperSeed
+```
+
+### Why?
+
+With the help of `aria2c` you can resume your download safely without the need of restarting it if your connection is not stable
+
 ### macadmin-scripts
 
 Some scripts that might be of use to macOS admins. Might be related to Munki;
